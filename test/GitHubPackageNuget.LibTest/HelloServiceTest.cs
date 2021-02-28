@@ -1,4 +1,5 @@
 using GitHubPackageNuget.Lib;
+using System;
 using Xunit;
 
 namespace GitHubPackageNuget.LibTest
@@ -42,6 +43,33 @@ namespace GitHubPackageNuget.LibTest
         {
             string helloMessage = _helloService.GetHelloMessage(_userNameWithSpaceBoth);
             Assert.Equal("Hello test user", helloMessage);
+        }
+
+        [Fact]
+        public void CanGetHelloMessageThrowExceptionIfUserNameIsBlank()
+        {
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _helloService.GetHelloMessage("");
+            });
+        }
+
+        [Fact]
+        public void CanGetHelloMessageThrowExceptionIfUserNameIsEmpty()
+        {
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _helloService.GetHelloMessage(string.Empty);
+            });
+        }
+
+        [Fact]
+        public void CanGetHelloMessageThrowExceptionIfUserNameIsNull()
+        {
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _helloService.GetHelloMessage(null);
+            });
         }
     }
 }
