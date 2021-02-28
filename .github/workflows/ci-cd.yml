@@ -11,14 +11,6 @@ on:
 env:
   DOTNET_VERSION: 5.0.101
   CONFIGURATION: Release
-  WEBAPP_PROJECT: src/GitHubPackageDemo.WebApp/GitHubPackageDemo.WebApp.csproj
-  PUBLISH_FOLDER: src/GitHubPackageDemo.WebApp/bin/publish
-  DOCKER_FILE: src/GitHubPackageDemo.WebApp/Dockerfile
-  DOCKERHUB_IMAGE_NAME: 45862391/githubpackagedemo:${{ github.run_number }}
-  DOCKERHUB_USER: 45862391  
-  GITHUB_DOCKER: https://docker.pkg.github.com
-  GITHUB_IMAGE_NAME: docker.pkg.github.com/arnab-developer/githubpackagedemo/githubpackagedemo:${{ github.run_number }}
-  GITHUB_DOCKER_USER: Arnab-Developer
 
 jobs:
   build-test:    
@@ -37,7 +29,7 @@ jobs:
     - name: Test
       run: dotnet test --configuration ${{ env.CONFIGURATION }}
 
-  github-package-deploy:
+  github-nuget-deploy:
     if: ${{ github.event_name == 'push' || github.event_name == 'release' }}
     runs-on: ubuntu-latest
     needs: build-test
@@ -50,16 +42,12 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}    
     - name: Restore dependencies
       run: dotnet restore
-    - name: Publish
-      run: dotnet publish ${{ env.WEBAPP_PROJECT }} --configuration {{env.CONFIGURATION}} -o ${{ env.PUBLISH_FOLDER }}
-    - name: Create docker image
-      run: docker build -f ${{ env.DOCKER_FILE }} -t ${{ env.GITHUB_IMAGE_NAME }} .
-    - name: Push docker image
-      run: |
-        docker login ${{ env.GITHUB_DOCKER }} -u ${{ env.GITHUB_DOCKER_USER }} -p '${{ secrets.GITHUB_TOKEN }}'
-        docker push ${{ env.GITHUB_IMAGE_NAME }}
+    - name: Build and create nuget package
+      run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore    
+    - name: Push nuget package
+      run: dotnet nuget push "src/GitHubPackageNuget.Lib/bin/Release/GitHubPackageNuget.Lib.1.0.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/Arnab-Developer/index.json --skip-duplicate
 
-  dockerhub-deploy:
+  nuget-org-deploy:
     if: ${{ github.event_name == 'release' }}
     runs-on: ubuntu-latest
     needs: build-test
@@ -72,11 +60,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}    
     - name: Restore dependencies
       run: dotnet restore
-    - name: Publish
-      run: dotnet publish ${{ env.WEBAPP_PROJECT }} --configuration {{env.CONFIGURATION}} -o ${{ env.PUBLISH_FOLDER }}
-    - name: Create docker image
-      run: docker build -f ${{ env.DOCKER_FILE }} -t ${{ env.DOCKERHUB_IMAGE_NAME }} .
-    - name: Push docker image
-      run: |
-        docker login -u ${{ env.DOCKERHUB_USER }} -p '${{ secrets.DOCKERHUB_PWD }}'
-        docker push ${{ env.DOCKERHUB_IMAGE_NAME }}
+    - name: Build and create nuget package
+      run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore    
+    - name: Push nuget package
+      run: dotnet nuget push "src/GitHubPackageNuget.Lib/bin/Release/GitHubPackageNuget.Lib.1.0.0.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
