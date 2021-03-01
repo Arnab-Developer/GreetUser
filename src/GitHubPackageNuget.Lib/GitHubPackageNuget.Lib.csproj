@@ -4,7 +4,6 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>9</LangVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>A demo nuget package to show GitHub package and Nuget deployment.</Description>
     <Authors>Arnab</Authors>
     <Company>Personal</Company>
