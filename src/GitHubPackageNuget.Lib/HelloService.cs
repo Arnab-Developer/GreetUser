@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GitHubPackageNuget.Lib
+﻿namespace GitHubPackageNuget.Lib
 {
     public class HelloService : IHelloService
     {
@@ -8,7 +6,7 @@ namespace GitHubPackageNuget.Lib
         {
             if (string.IsNullOrWhiteSpace(userName))
             {
-                throw new ArgumentException("User name can't be blank.");
+                return "User name can't be blank";
             }
             string userNameTrimmed = userName.Trim();
             string helloMessage = $"Hello {userNameTrimmed}";
