@@ -45,7 +45,7 @@ jobs:
     - name: Build and create nuget package
       run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore    
     - name: Push nuget package
-      run: dotnet nuget push "src/GitHubPackageNuget.Lib/bin/Release/GitHubPackageNuget.Lib.1.1.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/Arnab-Developer/index.json --skip-duplicate
+      run: dotnet nuget push "src/GitHubPackageNuget.Lib/bin/Release/GitHubPackageNuget.Lib.1.2.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/Arnab-Developer/index.json --skip-duplicate
 
   nuget-org-deploy:
     if: ${{ github.event_name == 'release' }}
@@ -63,4 +63,4 @@ jobs:
     - name: Build and create nuget package
       run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore    
     - name: Push nuget package
-      run: dotnet nuget push "src/GitHubPackageNuget.Lib/bin/Release/GitHubPackageNuget.Lib.1.1.0.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push "src/GitHubPackageNuget.Lib/bin/Release/GitHubPackageNuget.Lib.1.2.0.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
