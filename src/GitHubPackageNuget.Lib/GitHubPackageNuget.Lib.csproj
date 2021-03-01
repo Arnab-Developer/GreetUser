@@ -8,7 +8,7 @@
     <Description>A demo nuget package to show GitHub package and Nuget deployment.</Description>
     <Authors>Arnab</Authors>
     <Company>Personal</Company>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <RepositoryType>Demo</RepositoryType>
     <RepositoryUrl>https://github.com/Arnab-Developer/GitHubPackageNuget</RepositoryUrl>
   </PropertyGroup>
