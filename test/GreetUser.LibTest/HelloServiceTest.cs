@@ -1,6 +1,8 @@
 using GreetUser.Lib;
 using Xunit;
 
+#nullable disable
+
 namespace GreetUser.LibTest
 {
     public class HelloServiceTest
