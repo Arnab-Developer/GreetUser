@@ -11,7 +11,7 @@ on:
 env:
   DOTNET_VERSION: 5.0.101
   CONFIGURATION: Release
-  NUGET_PACKAGE_NAME: src/GreetUser.Lib/bin/Release/GreetUser.1.0.0.nupkg
+  NUGET_PACKAGE_NAME: src/GreetUser.Lib/bin/Release/GreetUser.1.1.0.nupkg
 
 jobs:
   build-test:    
