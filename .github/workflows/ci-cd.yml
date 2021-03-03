@@ -6,11 +6,12 @@ on:
   pull_request:
     branches: [ main ]
   release:
-    types: [created]
+    types: [ created ]
 
 env:
   DOTNET_VERSION: 5.0.101
   CONFIGURATION: Release
+  NUGET_PACKAGE_NAME: src/GreetUser.Lib/bin/Release/GreetUser.1.0.0.nupkg
 
 jobs:
   build-test:    
@@ -47,7 +48,7 @@ jobs:
     - name: Create nuget package
       run: dotnet pack --configuration ${{ env.CONFIGURATION }}
     - name: Push nuget package
-      run: dotnet nuget push "src/GitHubPackageNuget.Lib/bin/Release/GitHubPackageNuget.Lib.1.5.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/Arnab-Developer/index.json --skip-duplicate
+      run: dotnet nuget push {{ env.NUGET_PACKAGE_NAME }} --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/Arnab-Developer/index.json --skip-duplicate
 
   nuget-org-deploy:
     if: ${{ github.event_name == 'release' }}
@@ -67,4 +68,4 @@ jobs:
     - name: Create nuget package
       run: dotnet pack --configuration ${{ env.CONFIGURATION }}
     - name: Push nuget package
-      run: dotnet nuget push "src/GitHubPackageNuget.Lib/bin/Release/GitHubPackageNuget.Lib.1.5.0.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push {{ env.NUGET_PACKAGE_NAME }} --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

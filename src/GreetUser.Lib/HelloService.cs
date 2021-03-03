@@ -1,4 +1,4 @@
-﻿namespace GitHubPackageNuget.Lib
+﻿namespace GreetUser.Lib
 {
     public class HelloService : IHelloService
     {

@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\GitHubPackageNuget.Lib\GitHubPackageNuget.Lib.csproj" />
+    <ProjectReference Include="..\..\src\GreetUser.Lib\GreetUser.Lib.csproj" />
   </ItemGroup>
 
 </Project>

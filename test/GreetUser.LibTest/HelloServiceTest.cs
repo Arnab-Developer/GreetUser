@@ -1,7 +1,9 @@
-using GitHubPackageNuget.Lib;
+using GreetUser.Lib;
 using Xunit;
 
-namespace GitHubPackageNuget.LibTest
+#nullable disable
+
+namespace GreetUser.LibTest
 {
     public class HelloServiceTest
     {
