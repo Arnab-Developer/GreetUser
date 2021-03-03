@@ -1,7 +1,7 @@
-using GitHubPackageNuget.Lib;
+using GreetUser.Lib;
 using Xunit;
 
-namespace GitHubPackageNuget.LibTest
+namespace GreetUser.LibTest
 {
     public class HelloServiceTest
     {

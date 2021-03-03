@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FA4CCC28-4DA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4FB735D4-AB9E-41CA-8416-25EF36CC4A36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubPackageNuget.Lib", "src\GitHubPackageNuget.Lib\GitHubPackageNuget.Lib.csproj", "{7AFD1E3E-28AD-4463-826B-3948A95029D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreetUser.Lib", "src\GreetUser.Lib\GreetUser.Lib.csproj", "{7AFD1E3E-28AD-4463-826B-3948A95029D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubPackageNuget.LibTest", "test\GitHubPackageNuget.LibTest\GitHubPackageNuget.LibTest.csproj", "{17BDD3E6-346F-427C-8F68-992DCA7E95BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreetUser.LibTest", "test\GreetUser.LibTest\GreetUser.LibTest.csproj", "{17BDD3E6-346F-427C-8F68-992DCA7E95BC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F248D3C-85D7-4229-8831-71E34D2965A7}"
 	ProjectSection(SolutionItems) = preProject
