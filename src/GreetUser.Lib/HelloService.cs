@@ -1,6 +1,11 @@
-﻿namespace GreetUser.Lib
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("GreetUser.LibTest")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
+
+namespace GreetUser.Lib
 {
-    public class HelloService : IHelloService
+    internal class HelloService : IHelloService
     {
         string IHelloService.GetHelloMessage(string userName)
         {
