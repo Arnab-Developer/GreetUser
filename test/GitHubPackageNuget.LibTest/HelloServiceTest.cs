@@ -52,6 +52,13 @@ namespace GitHubPackageNuget.LibTest
         }
 
         [Fact]
+        public void Can_GetHelloMessage_ReturnInvalidUserIfUserNameIsSpace()
+        {
+            string helloMessage = _helloService.GetHelloMessage(" ");
+            Assert.Equal("User name can't be blank", helloMessage);
+        }
+
+        [Fact]
         public void Can_GetHelloMessage_ReturnInvalidUserIfUserNameIsEmpty()
         {
             string helloMessage = _helloService.GetHelloMessage(string.Empty);
