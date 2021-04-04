@@ -5,7 +5,7 @@ example pattern to create nuget package with .NET
 
 https://www.nuget.org/packages/GreetUser
 
-Workflow (`.github/workflows/ci-cd.yml`)
+Workflow `.github/workflows/ci-cd.yml`
 
 * For pull request to `main` only build and test.
 * When pull request merged in `main` then push the nuget package to GitHub package.
