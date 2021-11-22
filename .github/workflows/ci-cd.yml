@@ -9,9 +9,9 @@ on:
     types: [ created ]
 
 env:
-  DOTNET_VERSION: 5.0.101
+  DOTNET_VERSION: 5.0.300
   CONFIGURATION: Release
-  NUGET_PACKAGE_NAME: src/GreetUser.Lib/bin/Release/GreetUser.1.4.4.nupkg
+  NUGET_PACKAGE_NAME: src/GreetUser.Lib/bin/Release/GreetUser.1.4.5.nupkg
 
 jobs:
   build-test:    
@@ -48,7 +48,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore 
     - name: Create nuget package
-      run: dotnet pack --configuration ${{ env.CONFIGURATION }} /p:ContinuousIntegrationBuild=true
+      run: dotnet pack --configuration ${{ env.CONFIGURATION }}
     - name: Push nuget package
       run: dotnet nuget push ${{ env.NUGET_PACKAGE_NAME }} --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/Arnab-Developer/index.json --skip-duplicate
 
@@ -71,6 +71,6 @@ jobs:
     - name: Build
       run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore 
     - name: Create nuget package
-      run: dotnet pack --configuration ${{ env.CONFIGURATION }} /p:ContinuousIntegrationBuild=true
+      run: dotnet pack --configuration ${{ env.CONFIGURATION }}
     - name: Push nuget package
       run: dotnet nuget push ${{ env.NUGET_PACKAGE_NAME }} --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
