@@ -7,7 +7,7 @@
     <Description>This package takes a user name and return a hello message for that user.</Description>
     <Authors>Arnab Roy Chowdhury</Authors>
     <Company>Personal Project</Company>
-    <Version>1.4.2</Version>
+    <Version>1.4.3</Version>
     <RepositoryType>Demo application</RepositoryType>
     <RepositoryUrl>https://github.com/Arnab-Developer/GreetUser</RepositoryUrl>
     <PackageId>GreetUser</PackageId>
@@ -19,10 +19,6 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
 </Project>
